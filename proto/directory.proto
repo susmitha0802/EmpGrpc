@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option go_package = "./proto";
+
+service EmpService{
+    rpc sayCreateEmp(CreateEmpRequest) returns (CreateEmpResponse);
+
+    rpc sayReadEmp(ReadEmpRequest) returns (ReadEmpResponse);
+
+    rpc sayUpdateEmp(UpdateEmpRequest) returns (UpdateEmpResponse);
+
+    rpc sayDeleteEmp(DeleteEmpRequest) returns (DeleteEmpResponse);
+}
+
+message EmpDetails {
+    int32 id = 1;
+    string name = 2;
+    int32 dept_id = 3;
+    int32 manager_id = 4;
+}
+
+message EmpList {
+    string name = 1;
+    string dept_name = 2;
+    string manager_name = 3;
+}
+
+message CreateEmpRequest {
+    EmpDetails e = 1;
+}
+
+message CreateEmpResponse {
+    EmpDetails e = 1;
+}
+
+message ReadEmpRequest {
+
+}
+
+message ReadEmpResponse {
+    repeated EmpList el =1;
+}
+
+message UpdateEmpRequest {
+    string name = 1;
+}
+
+message UpdateEmpResponse {
+    string message = 1;
+}
+
+message DeleteEmpRequest {
+    string name = 1;
+}
+
+message DeleteEmpResponse {
+    string message = 1;
+}
